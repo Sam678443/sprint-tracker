@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  warmup: false
+  sittingbpm: 1
+  jogging: MyString
+  bpm: 1
+  sprintingbpm: 1
+
+two:
+  name: MyString
+  warmup: false
+  sittingbpm: 1
+  jogging: MyString
+  bpm: 1
+  sprintingbpm: 1
