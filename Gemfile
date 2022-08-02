@@ -73,6 +73,6 @@ end
 
 group :production do
   # Use postgres as the database in production for Active Record
-  gem "pg", "~> 0.21.0"
+  gem "pg"
 end
 
