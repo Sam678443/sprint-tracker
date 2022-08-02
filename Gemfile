@@ -78,3 +78,5 @@ group :production do
   gem "pg"
 end
 
+
+gem "tailwindcss-rails", "~> 2.0"
