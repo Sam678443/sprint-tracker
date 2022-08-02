@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>GymTrackExample</title>
+    <title>Sprint Tracker</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -10,6 +10,13 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
+
+  <% if notice %>
+    <p class="alert alert-success"><%= notice %></p>
+  <% end %>
+  <% if alert %>
+    <p class="alert alert-danger"><%= alert %></p>
+  <% end %>
 
   <body>
 
@@ -22,9 +29,17 @@
     <div class="flex h-full">
       <nav class="flex w-40 h-full bg-black p-4">
         <div class="w-full flex mx-auto px-6 py-8">
-          <div class="w-full h-full flex items-center justify-center text-white text-xl ">
+          <div class="w-full h-full flex items-center justify-center text-white text-l ">
             <ul>
               <li><%= link_to 'Home', sprints_path %></li>
+              <% if user_signed_in? %>
+                <li><%= link_to 'Sprints', sprints_path %></li>
+                <li><%= button_to 'Exit', destroy_user_session_path, method: :delete, form: { data: { turbo_confirm: "Are you sure you want to sign out?"}  } %></li>
+              <% else %>
+                <li><%= link_to 'Sign Up', new_user_registration_path %></li>
+                <li><%= link_to 'Sign In', new_user_session_path %></li>
+              <% end %>
+
             </ul>
           </div>
         </div>
