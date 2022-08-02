@@ -65,6 +65,6 @@ class SprintsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def sprint_params
-      params.require(:sprint).permit(:name, :warmup, :sittingbpm, :jogging, :bpm, :sprintingbpm)
+      params.require(:sprint).permit(:name, :warmup, :sittingbpm, :joggingbpm, :sprintingbpm)
     end
 end
