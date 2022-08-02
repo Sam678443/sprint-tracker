@@ -132,6 +132,9 @@ GEM
       racc (~> 1.4)
     nokogiri (1.13.7-x86_64-linux)
       racc (~> 1.4)
+    pg (0.21.0)
+    postgres (0.8.1)
+      pg (~> 0)
     public_suffix (4.0.7)
     puma (5.6.4)
       nio4r (~> 2.0)
@@ -222,6 +225,7 @@ DEPENDENCIES
   debug
   importmap-rails
   jbuilder
+  postgres (~> 0.8.1)
   puma (~> 5.0)
   rails (~> 7.0.3, >= 7.0.3.1)
   selenium-webdriver
