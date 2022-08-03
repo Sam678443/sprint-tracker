@@ -1,27 +1,32 @@
-<div id="<%= dom_id sprint %>">
+<div>
   <p>
-    <strong>Name:</strong>
+    <strong class="block font-medium mb-1">Name:</strong>
     <%= sprint.name %>
   </p>
 
   <p>
-    <strong>Warmup:</strong>
+    <strong class="block font-medium mb-1">Warmup:</strong>
     <%= sprint.warmup %>
   </p>
 
   <p>
-    <strong>Sitting bpm:</strong>
+    <strong class="block font-medium mb-1">Sitting bpm:</strong>
     <%= sprint.sittingbpm %>
   </p>
 
   <p>
-    <strong>Jogging bpm:</strong>
+    <strong class="block font-medium mb-1">Jogging bpm:</strong>
     <%= sprint.joggingbpm %>
   </p>
 
   <p>
-    <strong>Sprinting bpm:</strong>
+    <strong class="block font-medium mb-1">Sprinting bpm:</strong>
     <%= sprint.sprintingbpm %>
   </p>
 
+  <% if action_name != "show" %>
+    <%= link_to "Show this Sprint", sprint, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to 'Edit this Sprint', edit_sprint_path(sprint), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <hr class="mt-6">
+  <% end %>
 </div>

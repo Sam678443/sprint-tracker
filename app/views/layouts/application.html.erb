@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Sprint Tracker</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -9,60 +8,46 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <title>Sprint Tracker</title>
   </head>
-
-  <% if notice %>
-    <p class="alert alert-success"><%= notice %></p>
-  <% end %>
-  <% if alert %>
-    <p class="alert alert-danger"><%= alert %></p>
-  <% end %>
 
   <body>
 
-
-<div class="flex h-screen">
-  <div class="flex-1 flex flex-col overflow-hidden">
-    <header class="flex justify-between items-center bg-yellow-900 p-4">
-      <div class="flex text-white">Sprint Tracker</div>
-    </header>
-    <div class="flex h-full">
-      <nav class="flex w-40 h-full bg-black p-4">
-        <div class="w-full flex mx-auto px-6 py-8">
-          <div class="w-full h-full flex items-center justify-center text-white text-l ">
-            <ul>
-              <li><%= link_to 'Home', sprints_path %></li>
-              <% if user_signed_in? %>
-                <li><%= link_to 'Sprints', sprints_path %></li>
-                <li><%= button_to 'Exit', destroy_user_session_path, method: :delete, form: { data: { turbo_confirm: "Are you sure you want to sign out?"}  } %></li>
-              <% else %>
-                <li><%= link_to 'Sign Up', new_user_registration_path %></li>
-                <li><%= link_to 'Sign In', new_user_session_path %></li>
-              <% end %>
-
-            </ul>
+  <body>
+    <!-- Navbar is here -->
+    <nav class="bg-white shadow-lg">
+      <nav class="max-w-9xl mx-auto px-4">
+        <div class="flex justify-between"> 
+          <div class="flex space-x-7">
+          <!-- Website logo -->
+          <div>
+            <a href="#" class="flex items-center py-4 px-2">
+              <%= image_tag "Logo.png", height: 32, width: 32%>
+              <span class="font-semibold text-gray-500 text-lg">Sprint Tracker</span>
+            </a>
           </div>
+          <!-- Primary NavBar Items -->
+          <% if user_signed_in? %>
+            <div class="hidden md:flex items-center space-x-1">
+              <%= link_to "Home", sprints_path, class: "py-4 px-2 text-green-500 border-b-4 border-green-500 font-semibold"%>
+              <%= button_to 'Sign Out', destroy_user_session_path, method: :destroy, method: :delete, form: { data: { turbo_confirm: "Are you sure you want to sign out?"}  }, class: "py-4 px-2 text-gray-500 font-semibold hover:text-green-500 transition duration-300"%>
+            </div>
+          <% else %>
+            <div class="hidden md:flex items-center space-x-3 justify-end ">
+              <%= link_to 'Sign In', new_user_session_path, class: "py-4 px-2 text-gray-500 font-semibold hover:text-green-500 transition duration-300"%>
+              <%= link_to 'Sign Up', new_user_registration_path, class: "py-4 px-2 text-gray-500 font-semibold hover:text-green-500 transition duration-300"%>
+            </div>
+          <% end %>
         </div>
-      </nav>
-      <main class="flex flex-col w-full bg-white overflow-x-hidden overflow-y-auto mb-14">
-        <div class="flex w-full mx-auto px-6 py-8">
-          <main class="flex flex-col w-full h-full text-gray-900 text-xl ">
-            <%= yield %>
-          <!--
-            <div class="flex w-full max-w-xl h-60 items-center justify-center mx-auto bg-green-400 border-b border-gray-600">Post</div>
-            <div class="flex w-full max-w-xl h-60 items-center justify-center mx-auto bg-green-400 border-b border-gray-600">Post</div>
-            <div class="flex w-full max-w-xl h-60 items-center justify-center mx-auto bg-green-400 border-b border-gray-600">Post</div>
-            <div class="flex w-full max-w-xl h-60 items-center justify-center mx-auto bg-green-400 border-b border-gray-600">Post</div>
-            <div class="flex w-full max-w-xl h-60 items-center justify-center mx-auto bg-green-400 border-b border-gray-600">Post</div>
-            -->
-          </main>
-        </div>
-      </main>
-    </div>
-  </div>
-</div>
+      </div>
+    </nav>
 
-
-
+    <main class="flex flex-col w-full bg-white overflow-x-hidden overflow-y-auto mb-14">
+      <div class="flex w-full mx-auto px-6 py-8">
+        <main class="flex flex-col w-full h-full text-gray-900 text-xl ">
+          <%= yield %>
+        </main>
+      </div>
+    </main>
   </body>
 </html>
